@@ -3,7 +3,6 @@ const creator = document.querySelector('#criar-tarefa');
 const list = document.querySelector('#lista-tarefas');
 const clear = document.querySelector('#apaga-tudo');
 const rmSelecteds = document.querySelector('#remover-selecionado');
-const rmCompleteds = document.querySelector('#remover-finalizados');
 const saveList = document.querySelector('#salvar-tarefas');
 const moveUp = document.querySelector('#mover-cima');
 const moveDown = document.querySelector('#mover-baixo');
@@ -20,6 +19,7 @@ clear.addEventListener('click', () => {
   list.innerHTML = '';
 });
 
+
 list.addEventListener('click', (event) => {
   const selected = document.querySelector('.selected');
   const li = event.target;
@@ -31,14 +31,6 @@ list.addEventListener('click', (event) => {
   }
 });
 
-list.addEventListener('dblclick', (event) => {
-  const li = event.target;
-  if (li.classList.contains('completed')) {
-    li.classList.remove('completed');
-  } else {
-    li.classList.add('completed');
-  }
-});
 
 rmSelecteds.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
@@ -49,14 +41,6 @@ rmSelecteds.addEventListener('click', () => {
   }
 });
 
-rmCompleteds.addEventListener('click', () => {
-  const elements = document.querySelectorAll('li');
-  for (let i = 0; i < elements.length; i += 1) {
-    if (elements[i].classList.contains('completed')) {
-      elements[i].parentNode.removeChild(elements[i]);
-    }
-  }
-});
 
 moveUp.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
@@ -73,12 +57,13 @@ moveDown.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
   for (let i = 0; i < elements.length; i += 1) {
     if (elements[i].classList.contains('selected')) {
-      if (i !== elements.length - 1) {
+      if (i !== (elements.length - 1)) {
         list.insertBefore(elements[i + 1], elements[i]);
       }
     }
   }
 });
+
 
 saveList.addEventListener('click', () => {
   const elements = list.innerHTML;
