@@ -17,7 +17,7 @@ body {
     font-size: 40px;
     justify-content: center;
     align-items: center;
-    background-color: darkgray;
+    background-color: rgb(201, 31, 31);
     height: 90px;
     border-bottom-left-radius: 90%;
     border-bottom-right-radius: 90%;
@@ -34,4 +34,13 @@ body {
 .buttons {
     display: flex;
     justify-content: center;
+}
+
+.buttons button {
+    background-color: rgb(201, 31, 31);
+    border: 2px solid black;
+    color: black;
+    font-size: 20px;
+    padding: 5px;
+    margin: 0 2px;
 }
