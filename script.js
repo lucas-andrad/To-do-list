@@ -1,11 +1,11 @@
-const textInput = document.querySelector('#texto-tarefa');
-const creator = document.querySelector('#criar-tarefa');
-const list = document.querySelector('#lista-tarefas');
-const clear = document.querySelector('#apaga-tudo');
-const rmSelecteds = document.querySelector('#remover-selecionado');
-const saveList = document.querySelector('#salvar-tarefas');
-const moveUp = document.querySelector('#mover-cima');
-const moveDown = document.querySelector('#mover-baixo');
+const textInput = document.querySelector('#task-content');
+const creator = document.querySelector('#create-task');
+const list = document.querySelector('#todo-list');
+const clear = document.querySelector('#clear-all');
+const rmSelecteds = document.querySelector('#remove-selected');
+const saveList = document.querySelector('#save-tasks');
+const moveUp = document.querySelector('#move-up');
+const moveDown = document.querySelector('#move-down');
 
 creator.addEventListener('click', () => {
   const node = document.createElement('li');
@@ -19,18 +19,16 @@ clear.addEventListener('click', () => {
   list.innerHTML = '';
 });
 
-
 list.addEventListener('click', (event) => {
   const selected = document.querySelector('.selected');
   const li = event.target;
   if (selected != null) {
     selected.classList.remove('selected');
-    li.classList.add('selected');
+    li.classList.toggle('selected');
   } else {
-    li.classList.add('selected');
+    li.classList.toggle('selected');
   }
 });
-
 
 rmSelecteds.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
@@ -40,7 +38,6 @@ rmSelecteds.addEventListener('click', () => {
     }
   }
 });
-
 
 moveUp.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
@@ -57,13 +54,12 @@ moveDown.addEventListener('click', () => {
   const elements = document.querySelectorAll('li');
   for (let i = 0; i < elements.length; i += 1) {
     if (elements[i].classList.contains('selected')) {
-      if (i !== (elements.length - 1)) {
+      if (i !== elements.length - 1) {
         list.insertBefore(elements[i + 1], elements[i]);
       }
     }
   }
 });
-
 
 saveList.addEventListener('click', () => {
   const elements = list.innerHTML;
